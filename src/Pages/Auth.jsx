@@ -29,7 +29,7 @@ const Auth = (setUser) => {
     if (email && password) {
       const { user } = await signInWithEmailAndPassword(auth, email, password).then((result) => {
         toast("Success");
-        navigate("/");
+        navigate("/home");
         setUser(user);
       }).catch((error) => {
         return toast.error(error)
@@ -42,7 +42,7 @@ const Auth = (setUser) => {
   const handleAuthglg = async () => {
     const { user } = await signInWithPopup(auth, providerGoogle).then((result) => {
       toast("Success");
-      navigate("/");
+      navigate("/home");
         setUser(user);
     }).catch((error) => {
       return toast.error(error)
