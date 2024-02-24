@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { db } from '../firebase';
-import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
+import { collection, getDocs} from 'firebase/firestore';
 import Nav from '../Components/Nav'
 import { Link } from 'react-router-dom';
+import { BallTriangle } from 'react-loader-spinner';
 
 const truncateWords = (text, limit) => {
     const words = text.split(" ");
@@ -54,8 +55,22 @@ const Home = () => {
 
 
     return (
+      
         <div>
-            <Nav />
+          {loading ? (
+        // Render loader while user details are loading
+        <div className='grid h-screen place-items-center'><BallTriangle
+          height={100}
+          width={100}
+          radius={5}
+          color="rgb(37 99 235)"
+          ariaLabel="ball-triangle-loading"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+        /></div>
+      ) : (
+            <><Nav />
             <aside aria-label="Related Articles" className="mx-auto mt-10 max-w-screen-xl py-20">
                 <h2 className="mb-8 text-center text-5xl font-bold text-gray-900">All Blogs</h2>
 
@@ -68,7 +83,8 @@ const Home = () => {
 
                 </div>
             </aside>
-
+            </>
+            )}
         </div>
     )
 }

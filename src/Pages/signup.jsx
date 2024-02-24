@@ -35,7 +35,7 @@ const Signup = () => {
                     navigate("/login");
                 }).catch((error) => {
                     const errorMessage = error.message;
-                    return toast.error(errorMessage);
+                    return console.error(errorMessage);
                 })
                 await updateProfile(auth.currentUser, { displayName: name }).catch(
                     (err) => console.log(err)

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { db } from "../firebase"; // Import Firestore instance instead of the whole db object
 import { collection, addDoc, Timestamp } from "firebase/firestore"; // Import Firestore functions
 import Nav from '../Components/Nav';
-import { toast } from "react-toastify";
 import { useNavigate } from 'react-router-dom';
 
 const Blogs = collection(db, 'blogs');
@@ -22,7 +21,6 @@ const Create = () => {
             published_on: Timestamp.fromDate(new Date())
         })
             .then(() => {
-                toast("Success")
                 setTitle(""); // Reset input fields after submission
                 setBody("");
                 navigate("/");
@@ -47,7 +45,7 @@ const Create = () => {
                 </div>
                 <div>
                     <label className=""> Body </label>
-                    <input type="textarea" placeholder="Body" className="mt-2 h-12 w-full rounded-md bg-gray-100 px-3 outline-none focus:ring" 
+                    <textarea type="textarea" placeholder="Body" className="resize-none mt-2 h-52 w-full rounded-md bg-gray-100 px-3 outline-none focus:ring" 
                     value={body} onChange={(e) => setBody(e.target.value)} required/>
                 </div>
 

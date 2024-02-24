@@ -1,53 +1,49 @@
 import React, { useState } from 'react'
 import { signInWithEmailAndPassword, signInWithPopup} from "firebase/auth"
 import { auth, providerGoogle } from '../firebase'
-import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const initialState = {
   email: "",
   password: "",
 };
 
-const Auth = (setUser) => {
+const Auth = ({setUser}) => {
   const [state, setState] = useState(initialState);
 
   const { email, password } = state;
 
-  const navigate = useNavigate();
 
+  //Set Values for Email and Password
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
   };
 
 
 
-
   const handleAuth = async (e) => {
     e.preventDefault();
     if (email && password) {
-      const { user } = await signInWithEmailAndPassword(auth, email, password).then((result) => {
-        toast("Success");
-        navigate("/home");
-        setUser(user);
-      }).catch((error) => {
-        return toast.error(error)
-      })
+      try {
+        const { user } = await signInWithEmailAndPassword(auth, email, password);
+        setUser(user); // Set user after successful authentication
+      } catch (error) {
+        return console.error(error)
+      }
     } else {
       return toast.error("All fields are mandatory to fill");
     }
   }
 
   const handleAuthglg = async () => {
-    const { user } = await signInWithPopup(auth, providerGoogle).then((result) => {
-      toast("Success");
-      navigate("/home");
-        setUser(user);
-    }).catch((error) => {
-      return toast.error(error)
-    })
-
+    try {
+      const { user } = await signInWithPopup(auth, providerGoogle);
+      setUser(user); // Set user after successful authentication
+      console.log("done")
+    } catch (error) {
+      return console.error(error)
+    }
   }
 
   return (
