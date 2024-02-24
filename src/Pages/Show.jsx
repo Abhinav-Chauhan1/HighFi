@@ -60,7 +60,7 @@ const Show = () => {
                         <div className="mx-auto mt-10 max-w-screen-md space-y-12 px-4 py-10 font-serif text-lg tracking-wide text-gray-700">
                             <strong className="text-2xl font-medium">{blog.Body}</strong>
                         </div>
-                        <button onClick={handleDelete} className="rounded-lg w-32 bg-gray-900 px-4 py-2 text-center text-base font-semibold text-white shadow-md ring-gray-500 ring-offset-2 transition focus:ring-2">Delete Blog</button>
+                        <button onClick={handleDelete} className="rounded-lg w-32 mb-20 bg-gray-900 px-4 py-2 text-center text-base font-semibold text-white shadow-md ring-gray-500 ring-offset-2 transition focus:ring-2">Delete Blog</button>
                     </article>
 
 

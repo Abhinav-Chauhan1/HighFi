@@ -50,7 +50,7 @@ const Auth = ({setUser}) => {
     <div>
       <div className="flex flex-wrap">
         <div className="flex w-full flex-col md:w-1/2">
-          <div className="lg:w-[28rem] mx-auto my-auto flex flex-col justify-center pt-8 md:justify-start md:px-6 md:pt-0">
+          <div className="lg:w-[28rem] mx-auto lg:my-auto flex flex-col justify-center pt-8 md:justify-start md:px-6 mt-10 md:pt-0">
             <p className="text-left text-3xl font-bold">Welcome,</p>
             <p className="mt-2 text-left text-gray-500">Please enter your details to Login.</p>
             <button onClick={handleAuthglg} className="-2 mt-8 flex items-center justify-center rounded-md border px-4 py-1 outline-none ring-gray-400 ring-offset-2 transition focus:ring-2 hover:border-transparent hover:bg-black hover:text-white"><img className="mr-2 h-5" src="https://static.cdnlogo.com/logos/g/35/google-icon.svg" /> Log in with Google</button>
