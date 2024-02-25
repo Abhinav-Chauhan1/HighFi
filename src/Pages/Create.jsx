@@ -1,33 +1,58 @@
 import React, { useState } from 'react';
 import { db } from "../firebase"; // Import Firestore instance instead of the whole db object
-import { collection, addDoc, Timestamp } from "firebase/firestore"; // Import Firestore functions
+import { collection, addDoc, serverTimestamp } from "firebase/firestore"; // Import Firestore functions
+import TagsInput from 'react-tagsinput'
+import 'react-tagsinput/react-tagsinput.css'
 import Nav from '../Components/Nav';
 import { useNavigate } from 'react-router-dom';
 
 const Blogs = collection(db, 'blogs');
 
-const Create = () => {
+const initialState = {
+    title: "",
+    tags: [],
+    body: ""
+  };
+
+
+
+const Create = ({user}) => {
 
     const navigate = useNavigate();
-    const [title, setTitle] = useState("");
-    const [body, setBody] = useState("");
 
-    const handleSubmit = (e) => {
+    const [form, setForm] = useState(initialState);
+
+    const { title, tags, body } = form;
+
+    const handleChange = (e) => {
+        setForm({ ...form, [e.target.name]: e.target.value });
+      };
+
+      const handleTags = (tags) => {
+        setForm({ ...form, tags });
+      };
+
+
+    const handleSubmit = async(e) => {
         e.preventDefault();
         // Add data to the Firestore
-        addDoc(Blogs, {
-            Title: title,
-            Body: body,
-            published_on: Timestamp.fromDate(new Date())
-        })
-            .then(() => {
-                setTitle(""); // Reset input fields after submission
-                setBody("");
-                navigate("/");
-            })
-            .catch((error) => {
-                console.error("Error adding document: ", error);
-            });
+        if(title, body, tags){
+            try{
+                await addDoc(Blogs, {
+                    ...form,
+                    timestamp: serverTimestamp(),
+                    author: user.displayName,
+                    userId: user.uid,
+                })
+                    .catch((error) => {
+                        console.error("Error adding document: ", error);
+                    });
+            }catch (err) {
+                console.log(err);
+                
+        } 
+    }
+    navigate("/")
     }
 
     return (
@@ -40,13 +65,22 @@ const Create = () => {
                 <div>
                     <label className=""> Title </label>
                     <input type="text" placeholder="Title" className="mt-2 h-12 w-full rounded-md bg-gray-100 px-3 outline-none focus:ring" 
-                    alue={title} onChange={(e) => setTitle(e.target.value)} required
+                    value={title} onChange={handleChange} name="title"
                     />
                 </div>
                 <div>
-                    <label className=""> Body </label>
-                    <textarea type="textarea" placeholder="Body" className="resize-none mt-2 h-52 w-full rounded-md bg-gray-100 px-3 outline-none focus:ring" 
-                    value={body} onChange={(e) => setBody(e.target.value)} required/>
+                <label className=""> Tags </label>
+                <TagsInput
+                className="mt-2 h-12 w-full rounded-md bg-gray-100 px-3 outline-none focus:ring"
+                  value={tags}
+                  placeholder="Tags"
+                  onChange={handleTags}
+                />
+              </div>
+                <div>
+                    <label className=""> Description </label>
+                    <textarea type="textarea" placeholder="Description" className="resize-none mt-2 h-52 w-full rounded-md bg-gray-100 px-3 outline-none focus:ring" 
+                    value={body} onChange={handleChange} name="body"/>
                 </div>
 
                 <div>

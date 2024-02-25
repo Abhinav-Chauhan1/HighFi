@@ -3,7 +3,7 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from '../firebase';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
-const Nav = () => {
+const Nav = ({setUser}) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [username, setUsername] = useState("");
@@ -11,6 +11,7 @@ const Nav = () => {
   const handleLogout = async () => {
     await signOut(auth).then(() => {
       navigate("/");
+      setUser(null);
     }).catch((error) => {
       console.error("Logout Error: ", error);
     });
@@ -50,8 +51,8 @@ const Nav = () => {
           </label>
           <nav aria-label="Header Navigation" className="peer-checked:block hidden pl-2 py-6 sm:block sm:py-0">
             <ul className="flex flex-col gap-y-4 sm:flex-row sm:gap-x-8">
-              <li><Link className={`text-gray-600 hover:text-blue-600 ${location.pathname === "/home" ? "text-blue-500" : ""}`} to="/home">Home</Link></li>
-              <li><Link className={`text-gray-600 hover:text-blue-600 ${location.pathname === "/create" ? "text-blue-500" : ""}`} to="/create">Create</Link></li>
+              <li><Link className={` hover:text-blue-600 ${location.pathname === "/home" ? "text-blue-600 font-bold" : "text-gray-600"}`} to="/home">Blogs</Link></li>
+              <li><Link className={` hover:text-blue-600 ${location.pathname === "/create" ? " text-blue-600 font-bold" : "text-gray-600"}`} to="/create">Create Blog</Link></li>
               <li><a className="text-gray-600 hover:text-blue-600" href="#">About</a></li>
               <li className="mt-2 sm:mt-0"><a className="rounded-xl border-2 border-blue-600 px-6 py-2 font-medium text-blue-600 hover:bg-blue-600 hover:text-white" onClick={handleLogout}>Logout {username}</a></li>
             </ul>

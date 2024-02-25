@@ -47,7 +47,7 @@ function App() {
           {user && (
             <>
               <Route exact path="/home" element={<Home setUser={setUser}/>} />
-              <Route path="/create" element={<Create />} />
+              <Route path="/create" element={<Create user={user}/>} />
               <Route path="/show/:id" element={<Show />} />
             </>
           )}

@@ -27,7 +27,7 @@ const Auth = ({setUser}) => {
     if (email && password) {
       try {
         const { user } = await signInWithEmailAndPassword(auth, email, password);
-        setUser(user); // Set user after successful authentication
+        await setUser(user); // Set user after successful authentication
       } catch (error) {
         return console.error(error)
       }
@@ -39,7 +39,7 @@ const Auth = ({setUser}) => {
   const handleAuthglg = async () => {
     try {
       const { user } = await signInWithPopup(auth, providerGoogle);
-      setUser(user); // Set user after successful authentication
+      await setUser(user); // Set user after successful authentication
       console.log("done")
     } catch (error) {
       return console.error(error)

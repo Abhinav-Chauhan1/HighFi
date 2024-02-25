@@ -18,14 +18,14 @@ const Show = () => {
 
     const handleDelete = async () => {
         try {
-          // Delete the blog document from Firestore
-          await deleteDoc(doc(db, 'blogs', id));
-          // Reload the page after blog is deleted
-          navigate("/")
+            // Delete the blog document from Firestore
+            await deleteDoc(doc(db, 'blogs', id));
+            // Reload the page after blog is deleted
+            navigate("/")
         } catch (error) {
-          console.error('Error deleting blog:', error);
+            console.error('Error deleting blog:', error);
         }
-      };
+    };
 
 
 
@@ -47,18 +47,20 @@ const Show = () => {
                     <article className="flex flex-col items-center">
                         <header className="mx-auto max-w-screen-xl pt-28 text-center">
                             <p className="text-gray-500">{blog.timestamp ? blog.timestamp.toDate().toDateString() : 'Unknown Date'}</p>
-                            <h1 className="mt-2 text-3xl font-bold text-gray-900 sm:text-5xl">{blog.Title}</h1>
+                            <h1 className="mt-2 text-3xl font-bold text-gray-900 sm:text-5xl">{blog.title}</h1>
                             <div className="mt-6 flex flex-wrap justify-center gap-2" aria-label="Tags">
-                                <button className="rounded-lg bg-gray-100 px-2 py-1 font-medium text-gray-600 hover:bg-gray-200">Marketing</button>
-                                <button className="rounded-lg bg-gray-100 px-2 py-1 font-medium text-gray-600 hover:bg-gray-200">Branding</button>
-                                <button className="rounded-lg bg-gray-100 px-2 py-1 font-medium text-gray-600 hover:bg-gray-200">Digital</button>
-                                <button className="rounded-lg bg-gray-100 px-2 py-1 font-medium text-gray-600 hover:bg-gray-200">Identity</button>
+                                {blog.tags && blog.tags.slice(0, 3).map((tag, index) => (
+                                    <button key={index} className="rounded-lg bg-gray-100 px-2 py-1 font-medium text-gray-600 hover:bg-gray-200">
+                                        {tag}
+                                    </button>
+                                ))}
                             </div>
+
                             <img className="sm:h-[34rem] mt-10 w-full object-contain" src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Featured Image" />
                         </header>
 
                         <div className="mx-auto mt-10 max-w-screen-md space-y-12 px-4 py-10 font-serif text-lg tracking-wide text-gray-700">
-                            <strong className="text-2xl font-medium">{blog.Body}</strong>
+                            <strong className="text-2xl font-medium">{blog.body}</strong>
                         </div>
                         <button onClick={handleDelete} className="rounded-lg w-32 mb-20 bg-gray-900 px-4 py-2 text-center text-base font-semibold text-white shadow-md ring-gray-500 ring-offset-2 transition focus:ring-2">Delete Blog</button>
                     </article>
