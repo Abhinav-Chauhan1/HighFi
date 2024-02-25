@@ -1,21 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import React, { useEffect } from 'react';
+import { onAuthStateChanged } from "firebase/auth";
 import { auth } from '../firebase';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import ProfileLogo from "../assets/profile-nav.svg"
 
-const Nav = ({setUser}) => {
-  const navigate = useNavigate();
+const Nav = () => {
   const location = useLocation();
-  const [username, setUsername] = useState("");
+  const user = auth.currentUser;
 
-  const handleLogout = async () => {
-    await signOut(auth).then(() => {
-      navigate("/");
-      setUser(null);
-    }).catch((error) => {
-      console.error("Logout Error: ", error);
-    });
-  };
+  
 
   // Fetch user data when component mounts
   useEffect(() => {
@@ -50,11 +43,18 @@ const Nav = ({setUser}) => {
             <svg xmlns="http://www.w3.org/2000/svg" width="0.88em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96c0-17.7 14.3-32 32-32h384c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zm0 160c0-17.7 14.3-32 32-32h384c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zm448 160c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32h384c17.7 0 32 14.3 32 32z" /></svg>
           </label>
           <nav aria-label="Header Navigation" className="peer-checked:block hidden pl-2 py-6 sm:block sm:py-0">
-            <ul className="flex flex-col gap-y-4 sm:flex-row sm:gap-x-8">
-              <li><Link className={` hover:text-blue-600 ${location.pathname === "/home" ? "text-blue-600 font-bold" : "text-gray-600"}`} to="/home">Blogs</Link></li>
+            <ul className="flex flex-col items-center gap-y-4 sm:flex-row sm:gap-x-8">
+              <li><Link className={` hover:text-blue-600 ${location.pathname === "/home" || location.pathname === "/show:#" ? "text-blue-600 font-bold" : "text-gray-600"}`} to="/home">Blogs</Link></li>
               <li><Link className={` hover:text-blue-600 ${location.pathname === "/create" ? " text-blue-600 font-bold" : "text-gray-600"}`} to="/create">Create Blog</Link></li>
-              <li><a className="text-gray-600 hover:text-blue-600" href="#">About</a></li>
-              <li className="mt-2 sm:mt-0"><a className="rounded-xl border-2 border-blue-600 px-6 py-2 font-medium text-blue-600 hover:bg-blue-600 hover:text-white" onClick={handleLogout}>Logout {username}</a></li>
+              <li><Link className={` hover:text-blue-600 `} to="/about">
+              <div className="flex w-auto mx-4 items-center overflow-hidden rounded-xl bg-white border-2 text-blue-600 border-blue-600 p-2   shadow hover:shadow-xl">
+                <img className="shrink-0  w-8  rounded-full"  src={user.photoURL ? user.photoURL : ProfileLogo} />
+                <div className="">
+                  <p className="font-medium px-3">{user.displayName}</p>
+                </div>
+              </div>
+              </Link>
+              </li>
             </ul>
           </nav>
         </div>

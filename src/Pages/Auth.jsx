@@ -29,12 +29,18 @@ const Auth = ({setUser}) => {
         const { user } = await signInWithEmailAndPassword(auth, email, password);
         await setUser(user); // Set user after successful authentication
       } catch (error) {
-        return console.error(error)
+        if (error.code === "auth/invalid-credential") {
+          toast.error("Incorrect password entered.");
+        } else if (error.code === "auth/user-not-found") {
+          toast.error("No user found with this email.");
+        } else {
+          console.error("An error occurred:", error.message);
+        }
       }
     } else {
       return toast.error("All fields are mandatory to fill");
     }
-  }
+  };
 
   const handleAuthglg = async () => {
     try {

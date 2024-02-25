@@ -15,7 +15,6 @@ const initialState = {
   };
 
 
-
 const Create = ({user}) => {
 
     const navigate = useNavigate();
@@ -23,6 +22,7 @@ const Create = ({user}) => {
     const [form, setForm] = useState(initialState);
 
     const { title, tags, body } = form;
+
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
@@ -71,11 +71,14 @@ const Create = ({user}) => {
                 <div>
                 <label className=""> Tags </label>
                 <TagsInput
-                className="mt-2 h-12 w-full rounded-md bg-gray-100 px-3 outline-none focus:ring"
+                  inputFieldPosition="bottom"
+                  className="mt-2 h-12 w-full rounded-md bg-gray-100 px-3 outline-none focus:ring cursor-default"
                   value={tags}
-                  placeholder="Tags"
+                  addKeys="32, 13"
+                  placeholder="Add a tag"
                   onChange={handleTags}
                 />
+                
               </div>
                 <div>
                     <label className=""> Description </label>

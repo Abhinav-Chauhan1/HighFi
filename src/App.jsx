@@ -11,6 +11,7 @@ import { ToastContainer } from 'react-toastify';
 import Create from './Pages/Create';
 import Show from './Pages/Show';
 import { BallTriangle } from 'react-loader-spinner';
+import About from './Pages/About';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -49,6 +50,7 @@ function App() {
               <Route exact path="/home" element={<Home setUser={setUser}/>} />
               <Route path="/create" element={<Create user={user}/>} />
               <Route path="/show/:id" element={<Show />} />
+              <Route path="/about" element={<About />} />
             </>
           )}
         </Routes>
