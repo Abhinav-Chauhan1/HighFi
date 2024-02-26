@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { onAuthStateChanged } from "firebase/auth";
+import React from 'react';
 import { auth } from '../firebase';
 import { Link, useLocation } from 'react-router-dom';
 import ProfileLogo from "../assets/profile-nav.svg"
@@ -7,21 +6,6 @@ import ProfileLogo from "../assets/profile-nav.svg"
 const Nav = () => {
   const location = useLocation();
   const user = auth.currentUser;
-
-  
-
-  // Fetch user data when component mounts
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUsername(user.displayName || "");
-      } else {
-        setUsername("");
-      }
-    });
-
-    return () => unsubscribe(); // Clean up on unmount
-  }, []);
 
   return (
     <div>
@@ -48,7 +32,7 @@ const Nav = () => {
               <li><Link className={` hover:text-blue-600 ${location.pathname === "/create" ? " text-blue-600 font-bold" : "text-gray-600"}`} to="/create">Create Blog</Link></li>
               <li><Link className={` hover:text-blue-600 `} to="/about">
               <div className="flex w-auto mx-4 items-center overflow-hidden rounded-xl bg-white border-2 text-blue-600 border-blue-600 p-2   shadow hover:shadow-xl">
-                <img className="shrink-0  w-8  rounded-full"  src={user.photoURL ? user.photoURL : ProfileLogo} />
+                <img className="shrink-0  w-8  rounded-full"  src={user.photoURL ? user.photoURL : ProfileLogo} referrerPolicy="no-referrer"/>
                 <div className="">
                   <p className="font-medium px-3">{user.displayName}</p>
                 </div>
