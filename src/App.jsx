@@ -47,10 +47,10 @@ function App() {
           <Route path="/signup" element={user ? <Navigate to="/home" /> : <Signup setUser={setUser}/>} />
           {user && (
             <>
-              <Route exact path="/home" element={<Home setUser={setUser}/>} />
-              <Route path="/create" element={<Create user={user}/>} />
-              <Route path="/show/:id" element={<Show />} />
-              <Route path="/about" element={<About />} />
+              <Route exact path="/home" element={<Home setUser={user}/>} />
+              <Route path="/create" element={<Create setUser={user}/>} />
+              <Route path="/show/:id" element={<Show setUser={user}/>} />
+              <Route path="/about" element={<About setUser={user}/>} />
             </>
           )}
         </Routes>
