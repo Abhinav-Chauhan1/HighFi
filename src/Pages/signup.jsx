@@ -24,31 +24,31 @@ const Signup = () => {
     };
 
     const handleAuth = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
         if (password !== confirmPassword) {
-            return toast.error("Passwords Does Not Match");
-        }
-        else {
+            return toast.error("Passwords Do Not Match");
+        } else {
             if (name && email && password) {
-                await createUserWithEmailAndPassword(auth, email, password).then((result) => {
-                    toast.error("Success")
-                    navigate("/login");
-                }).catch((error) => {
-                    const errorMessage = error.message;
-                    return console.error(errorMessage);
-                })
-                await updateProfile(auth.currentUser, { displayName: name }).catch(
-                    (err) => console.log(err)
-                  );
+                try {
+                    // Create user
+                    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                    // Update profile
+                    await updateProfile(userCredential.user, { displayName: name });
+                    // Log out the user
+                    await auth.signOut();
+                    // Redirect to login page
+                    navigate("/");
+                    toast.success("Sign up successful! Please log in.");
+                } catch (error) {
+                    console.error("Error signing up:", error.message);
+                    toast.error("Error signing up. Please try again later.");
+                }
+            } else {
+                toast.error("All fields are mandatory to fill");
             }
-            else {
-                return toast.error("All fields are mandatory to fill");
-            }
-
         }
-
-
-    }
+    };
+    
 
 
     return (

@@ -39,7 +39,7 @@ const Create = () => {
 
         try {
             if (!title || !body) {
-                toast("Please fill in all required fields");
+                toast.warning("Please fill in all required fields");
                 return;
             }
             setLoading(true);
@@ -69,6 +69,7 @@ const Create = () => {
             });
             setLoading(false);
             navigate("/");
+            toast.success("Sucessfully Created Blog")
         } catch (error) {
             console.error("Error creating blog: ", error);
         }

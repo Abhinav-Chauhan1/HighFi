@@ -21,26 +21,28 @@ const BlogItem = ({ blog }) => {
   return (
     <article className="mx-auto my-4 w-full md:w-[90%] flex flex-col overflow-hidden rounded-lg border border-gray-300 bg-white text-gray-900 transition hover:translate-y-2 hover:shadow-lg">
       <Link to={`/show/${blog.id}`}>
-      <div>
-        <img src={blog.imageUrl? blog.imageUrl:"https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHBhcnRuZXJzaGlwfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"} className="h-56 w-full object-cover" alt="" />
-        <div className="flex-auto px-6 py-5" key={blog.id}>
-          <span className="mb-2 flex items-center text-sm font-semibold">
-            {blog.tags && blog.tags.slice(0, 3).map((tag, index) => (
-              <React.Fragment key={index}>
-                <span>@{tag}</span>
-                {index < blog.tags.slice(0, 3).length - 1 && <span className="px-1">|</span>}
-              </React.Fragment>
-            ))}
-          </span>
-          <h3 className="mt-4 mb-3 text-xl font-semibold xl:text-2xl">{blog.title}</h3>
-          <p className="mb-4 text-base font-light">{truncatedBody}</p>
-          <Link to={`/show/${blog.id}`} className="inline-block cursor-pointer select-none rounded-full border border-gray-800 bg-gray-800 px-2 py-1 text-center align-middle text-sm font-semibold leading-normal text-white no-underline shadow-sm">Read Now</Link>
+        <div>
+          <img src={blog.imageUrl ? blog.imageUrl : "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHBhcnRuZXJzaGlwfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"} className="h-56 w-full object-cover" alt="" />
+          <div className="flex-auto px-6 py-5" key={blog.id}>
+            <span className="mb-2 flex items-center text-sm font-semibold">
+              {blog.tags && blog.tags.slice(0, 3).map((tag, index) => (
+                <React.Fragment key={index}>
+                  <span>@{tag}</span>
+                  {index < blog.tags.slice(0, 3).length - 1 && <span className="px-1">|</span>}
+                </React.Fragment>
+              ))}
+            </span>
+            <h3 className="mt-4 mb-3 text-xl font-semibold xl:text-2xl">{blog.title}</h3>
+            <p className="mb-4 text-base font-light">{truncatedBody}</p>
+            <Link to={`/show/${blog.id}`} className="inline-block cursor-pointer select-none rounded-full border border-gray-800 bg-gray-800 px-2 py-1 text-center align-middle text-sm font-semibold leading-normal text-white no-underline shadow-sm">Read Now</Link>
+          </div>
         </div>
-      </div>
       </Link>
     </article>
   );
 };
+
+
 
 const Home = () => {
   const [loading, setLoading] = useState(true); // State to track loading status

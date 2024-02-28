@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { signInWithEmailAndPassword, signInWithPopup} from "firebase/auth"
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth"
 import { auth, providerGoogle } from '../firebase'
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -9,7 +9,7 @@ const initialState = {
   password: "",
 };
 
-const Auth = ({setUser}) => {
+const Auth = ({ setUser }) => {
   const [state, setState] = useState(initialState);
 
   const { email, password } = state;
@@ -19,8 +19,6 @@ const Auth = ({setUser}) => {
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
   };
-
-
 
   const handleAuth = async (e) => {
     e.preventDefault();
@@ -59,7 +57,7 @@ const Auth = ({setUser}) => {
           <div className="lg:w-[28rem] mx-auto lg:my-auto flex flex-col justify-center pt-8 md:justify-start md:px-6 mt-10 md:pt-0">
             <p className="text-left text-3xl font-bold">Welcome,</p>
             <p className="mt-2 text-left text-gray-500">Please enter your details to Login.</p>
-            <button onClick={handleAuthglg}  className="-2 mt-8 flex items-center justify-center rounded-md border px-4 py-1 outline-none ring-gray-400 ring-offset-2 transition focus:ring-2 hover:border-transparent hover:bg-black hover:text-white"><img className="mr-2 h-5" src="https://static.cdnlogo.com/logos/g/35/google-icon.svg" /> Log in with Google</button>
+            <button onClick={handleAuthglg} className="-2 mt-8 flex items-center justify-center rounded-md border px-4 py-1 outline-none ring-gray-400 ring-offset-2 transition focus:ring-2 hover:border-transparent hover:bg-black hover:text-white"><img className="mr-2 h-5" src="https://static.cdnlogo.com/logos/g/35/google-icon.svg" /> Log in with Google</button>
             <div className="relative mt-8 flex h-px place-items-center bg-gray-200">
               <div className="absolute left-1/2 h-6 w-14 -translate-x-1/2 bg-white text-center text-sm text-gray-500">or</div>
             </div>
@@ -83,7 +81,10 @@ const Auth = ({setUser}) => {
             <div className="py-12 text-center">
               <p className="whitespace-nowrap text-gray-600">
                 Don't have an account?
-                <Link to="/signup" className="underline-offset-4 font-semibold text-gray-900 underline">Sign up for free.</Link>
+                <div className='my-2'>
+                  <Link to="/signup" className="underline-offset-4 font-semibold text-gray-900 underline">Sign up for free.</Link>
+                </div>
+                <Link to="/forgotpass" className="underline-offset-4 font-semibold text-gray-900 underline">forgot password?</Link>
               </p>
             </div>
           </div>

@@ -81,7 +81,6 @@ const Show = () => {
                             <p className="text-2xl font-medium">{blog.body}</p>
                             <div className="flex ">
                             <p className="font-medium">Written by: {blog.author}</p>
-                            <img className="shrink-0  w-8 ml-4 rounded-full"  src={user.photoURL ? user.photoURL : ProfileLogo} referrerPolicy="no-referrer"/>
                             </div>
                             
                         </div>

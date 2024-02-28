@@ -12,6 +12,7 @@ import Create from './Pages/Create';
 import Show from './Pages/Show';
 import { BallTriangle } from 'react-loader-spinner';
 import About from './Pages/About';
+import Forgotpass from './Pages/Forgotpass';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -45,6 +46,7 @@ function App() {
         <Routes>
           <Route path="/" element={user ? <Navigate to="/home" /> : <Auth setUser={setUser} />} />
           <Route path="/signup" element={user ? <Navigate to="/home" /> : <Signup setUser={setUser}/>} />
+          <Route path="/forgotpass" element={user ? <Navigate to="/home" /> : <Forgotpass setUser={setUser}/>} />
           {user && (
             <>
               <Route exact path="/home" element={<Home setUser={user}/>} />
