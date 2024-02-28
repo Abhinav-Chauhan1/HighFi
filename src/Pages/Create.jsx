@@ -7,12 +7,13 @@ import { useNavigate } from 'react-router-dom';
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage"; // Import Storage functions
 import { toast } from 'react-toastify';
 import FormField from '../Components/FormField';
+import { BallTriangle } from 'react-loader-spinner';
 
 const Blogs = collection(db, 'blogs');
 
 const Create = () => {
     const navigate = useNavigate();
-
+    const [loading, setLoading] = useState(false);
     const [form, setForm] = useState({
         title: "",
         tags: [],
@@ -41,7 +42,7 @@ const Create = () => {
                 toast("Please fill in all required fields");
                 return;
             }
-
+            setLoading(true);
             let imageUrl = null;
 
             // Upload image to Firebase Storage if file is provided
@@ -66,6 +67,7 @@ const Create = () => {
                 tags: [],
                 body: ""
             });
+            setLoading(false);
             navigate("/");
         } catch (error) {
             console.error("Error creating blog: ", error);
@@ -77,7 +79,20 @@ const Create = () => {
     };
 
     return (
-        <div>
+        <div>{loading ? (
+            // Render loader while user details are loading
+            <div className='grid h-screen place-items-center'><BallTriangle
+              height={100}
+              width={100}
+              radius={5}
+              color="rgb(37 99 235)"
+              ariaLabel="ball-triangle-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+            /></div>
+          ) : (
+            <>
             <Nav />
             <form onSubmit={handleSubmit} className="relative space-y-3 rounded-md bg-white p-6 shadow-xl lg:p-10 border border-gray-100 m-10 h-max">
                 <h1 className="text-xl font-semibold lg:text-2xl">Create Blog</h1>
@@ -94,6 +109,7 @@ const Create = () => {
                     <button className="rounded-xl border-2 my-10 border-blue-600 px-6 py-2 font-medium text-blue-600 hover:bg-blue-600 hover:text-white">Submit</button>
                 </div>
             </form>
+            </>)}
         </div>
     );
 }
