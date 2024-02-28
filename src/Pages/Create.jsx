@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { db, storage } from "../firebase"; // Import Firestore and Storage instances
+import { db, storage, auth } from "../firebase"; // Import Firestore and Storage instances
 import { collection, addDoc, serverTimestamp } from "firebase/firestore"; // Import Firestore functions
 import 'react-tagsinput/react-tagsinput.css';
 import Nav from '../Components/Nav';
@@ -10,7 +10,7 @@ import FormField from '../Components/FormField';
 
 const Blogs = collection(db, 'blogs');
 
-const Create = ({ user }) => {
+const Create = () => {
     const navigate = useNavigate();
 
     const [form, setForm] = useState({
@@ -20,7 +20,10 @@ const Create = ({ user }) => {
     });
     const [file, setFile] = useState(null);
 
+    const user = auth.currentUser;
+
     const { title, tags, body } = form;
+
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
