@@ -19,7 +19,7 @@ Welcome to HighFiii, a blog app built using Vite React and Firebase for authenti
 
 To get started with HighFiii, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/your-username/highfiii.git`
+1. Clone the repository: `git clone https://github.com/Abhinav-Chauhan1/highfiii.git`
 2. Navigate to the project directory: `cd highfiii`
 3. Install dependencies: `npm install`
 4. Configure Firebase:
