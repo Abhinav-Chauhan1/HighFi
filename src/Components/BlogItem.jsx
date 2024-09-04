@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const BlogItem = ({ blog }) => {
   return (
-    <article className="flex flex-col overflow-hidden rounded-lg  bg-white text-gray-900 transition hover:translate-y-1 hover:shadow-lg w-full h-[500px]">
+    <article className="flex flex-col overflow-hidden rounded-lg  bg-white text-gray-900 transition hover:translate-y-1 w-full h-[500px]">
       <Link to={`/show/${blog.id}`}>
         <div className="flex flex-col">
           <img
