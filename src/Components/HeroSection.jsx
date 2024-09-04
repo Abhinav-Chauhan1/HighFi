@@ -28,10 +28,11 @@ const HeroSection = () => {
           xmlns="http://www.w3.org/2000/svg"
           aria-hidden="true"
           role="img"
-          width="10em"
-          height="10em"
+          width="9em"
+          height="9em"
           preserveAspectRatio="xMidYMid meet"
           viewBox="0 0 24 24"
+          style={{ marginTop: "-1.5rem" }}
         >
           <path
             fill="blue"

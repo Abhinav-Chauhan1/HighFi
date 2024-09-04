@@ -59,7 +59,7 @@ const Nav = () => {
           >
             <ul className="flex flex-col items-center gap-y-4 sm:flex-row sm:gap-x-8">
               <li>
-                <Link
+                {/* <Link
                   className={` hover:text-blue-600 ${
                     location.pathname === "/home" ||
                     location.pathname === "/show:#"
@@ -69,14 +69,14 @@ const Nav = () => {
                   to="/home"
                 >
                   Blogs
-                </Link>
+                </Link> */}
               </li>
               <li>
                 <Link
-                  className={` hover:text-blue-600 ${
+                  className={` hover:text-blue-800 ${
                     location.pathname === "/create"
-                      ? " text-blue-600 font-bold"
-                      : "text-gray-600"
+                      ? " text-blue-800 font-bold"
+                      : "text-gray-800"
                   }`}
                   to="/create"
                 >
@@ -87,12 +87,12 @@ const Nav = () => {
                 <Link className={` hover:text-blue-600 `} to="/about">
                   <div className="flex w-auto mx-4 items-center overflow-hidden rounded-xl   p-2 ">
                     <img
-                      className="shrink-0 h-16 rounded-full border-2  border-blue-600"
+                      className="shrink-0 h-12 rounded-full border-2  border-blue-600"
                       src={user.photoURL ? user.photoURL : ProfileLogo}
                       referrerPolicy="no-referrer"
                     />
                     <div>
-                      <p className="font-medium px-3">{firstName}</p>
+                      <p className="font-medium text-xl px-3">{firstName}</p>
                     </div>
                   </div>
                 </Link>
