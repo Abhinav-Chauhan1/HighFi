@@ -1,0 +1,9 @@
+{
+  "name": "HighFii Blog",
+  "short_name": "HighFii",
+  "description": "An exceptional blogging platform where you can share your stories and thoughts on tech and lifestyle.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0000ff"
+}
