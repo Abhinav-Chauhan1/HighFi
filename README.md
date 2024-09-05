@@ -23,6 +23,10 @@ _New hero section to increase user engagement._
 ![UI Upgrade](public/blogs.png)
 _Updated UI for a more modern look._
 
+![New Layout](public/layout.png)
+_Updated Layout for a blog content._
+
+
 
 ## Features
 

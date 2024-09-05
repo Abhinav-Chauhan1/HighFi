@@ -14,6 +14,7 @@ import { BallTriangle } from "react-loader-spinner";
 import About from "./Pages/About";
 import Forgotpass from "./Pages/Forgotpass";
 import AboutUs from "./Pages/AboutUs";
+import Update from "./Pages/Update";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -72,6 +73,7 @@ function App() {
               <Route path="/show/:id" element={<Show setUser={user} />} />
               <Route path="/about" element={<About setUser={user} />} />
               <Route path="/aboutus" element={<AboutUs setUser={user} />} />
+              <Route path="/update/:id" element={<Update setUser={user} />} />
             </>
           )}
         </Routes>
