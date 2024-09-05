@@ -23,8 +23,9 @@ Welcome to HighFiii, a blog app built using Vite React and Firebase for authenti
 
 7. **Alerts Implementation**
    - Implemented alerts to notify users of successful deletions or errors, improving user experience.
+8. **Protected Routes**: Protected routing is used to restrict access to certain routes based on user authentication or authorization, ensuring only authorized users can navigate to specific pages.
 
-5. **Built with Love ❤️**: Developed with care and attention to detail to provide a delightful experience for our users.
+9. **Built with Love ❤️**: Developed with care and attention to detail to provide a delightful experience for our users.
 
 ## Screenshots
 
@@ -35,7 +36,7 @@ _New hero section to increase user engagement._
 _Updated UI for a more modern look._
 
 ![New Layout](public/layout.png)
-_Updated Layout for a blog content._
+_Updated Layout for blog content._
 
 
 
