@@ -21,8 +21,7 @@ Welcome to HighFiii, a blog app built using Vite React and Firebase for authenti
    - Integrated a confirmation dialog using SweetAlert2 before deleting a blog post.
    - Added success and error alerts to provide user feedback on deletion status.
 
-7. **Alerts Implementation**
-   - Implemented alerts to notify users of successful deletions or errors, improving user experience.
+7. **Alerts Implementation** : Implemented alerts to notify users of successful deletions or errors, improving user experience.
 8. **Protected Routes**: Protected routing is used to restrict access to certain routes based on user authentication or authorization, ensuring only authorized users can navigate to specific pages.
 
 9. **Built with Love ❤️**: Developed with care and attention to detail to provide a delightful experience for our users.
