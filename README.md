@@ -13,6 +13,17 @@ Welcome to HighFiii, a blog app built using Vite React and Firebase for authenti
 
 4. **Integration of Cropper.js**: Utilized Cropper.js to enhance the usability and stability of the blog site, allowing users to crop images more efficiently.
 
+5. **SweetAlert2 Integration**
+   - Added `SweetAlert2` to handle confirmation dialogs.
+   - Installed and imported the `sweetalert2` package.
+
+6. **Enhanced `handleDelete` Function**
+   - Integrated a confirmation dialog using SweetAlert2 before deleting a blog post.
+   - Added success and error alerts to provide user feedback on deletion status.
+
+7. **Alerts Implementation**
+   - Implemented alerts to notify users of successful deletions or errors, improving user experience.
+
 5. **Built with Love ❤️**: Developed with care and attention to detail to provide a delightful experience for our users.
 
 ## Screenshots
