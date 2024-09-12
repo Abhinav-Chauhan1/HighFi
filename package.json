@@ -1,7 +1,7 @@
 {
   "name": "HighFii v2",
   "private": true,
-  "version": "2.0.0",
+  "version": "2.12.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -12,13 +12,16 @@
   "dependencies": {
     "cropperjs": "^1.6.2",
     "firebase": "^10.8.0",
+    "html-react-parser": "^5.1.15",
     "react": "^18.2.0",
     "react-cropper": "^2.3.3",
     "react-dom": "^18.2.0",
     "react-loader-spinner": "^6.1.6",
+    "react-quill": "^2.0.0",
     "react-router-dom": "^6.22.1",
     "react-tagsinput": "^3.20.3",
-    "react-toastify": "^10.0.4"
+    "react-toastify": "^10.0.4",
+    "sweetalert2": "^11.13.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.56",

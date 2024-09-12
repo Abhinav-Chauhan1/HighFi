@@ -26,7 +26,7 @@ const BlogItem = ({ blog }) => {
                       title={tag}
                       className="border-2 border-gray-700 rounded-full p-2"
                     >
-                      @{tag}
+                      #{tag}
                     </span>
                     {index < blog.tags.slice(0, 3).length - 1 && (
                       <span className="px-1"></span>

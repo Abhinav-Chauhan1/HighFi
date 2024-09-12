@@ -56,3 +56,15 @@ button:hover .border {
 }
 
 /*-----------------Blog Item Codes-------------------*/
+.blog-body h1 {
+  @apply text-4xl font-bold text-gray-800;
+}
+.blog-body h2 {
+  @apply text-3xl font-semibold text-gray-700;
+}
+.blog-body h3 {
+  @apply text-2xl font-medium text-gray-600;
+}
+.blog-body p {
+  @apply text-base text-gray-700;
+}
