@@ -25,10 +25,14 @@ const AboutUs = () => {
 
         <div className="flex flex-col md:flex-row items-center mb-8">
           <img
-            src="../../public/header.png"
+            src="https://github.com/R1SH4BH81/HighFi-Dev/blob/main/public/header.png?raw=true"
             alt="Sleek Design"
             className="w-full md:w-1/2 rounded-lg mb-4 md:mb-0 md:mr-4 shadow-md rounded-lg cursor-pointer"
-            onClick={() => openModal("../../public/header.png")}
+            onClick={() =>
+              openModal(
+                "https://github.com/R1SH4BH81/HighFi-Dev/blob/main/public/header.png?raw=true"
+              )
+            }
           />
           <p className="text-xl text-gray-700 md:w-1/2">
             Experience our sleek and cheeky design that captures attention and
@@ -39,10 +43,14 @@ const AboutUs = () => {
 
         <div className="flex flex-col md:flex-row-reverse items-center mb-8 mt-10">
           <img
-            src="../../public/blogs.png"
+            src="https://github.com/R1SH4BH81/HighFi-Dev/blob/main/public/blogs.png?raw=true"
             alt="Awesome Blog"
             className="w-full md:w-1/2 rounded-lg mb-4 md:mb-0 md:ml-4 shadow-md rounded-lg cursor-pointer"
-            onClick={() => openModal("../../public/blogs.png")}
+            onClick={() =>
+              openModal(
+                "https://github.com/R1SH4BH81/HighFi-Dev/blob/main/public/blogs.png?raw=true"
+              )
+            }
           />
           <p className="text-xl text-gray-700 md:w-1/2">
             Discover awesome blogs to read and get inspired. Our platform
@@ -54,10 +62,14 @@ const AboutUs = () => {
 
         <div className="flex flex-col md:flex-row items-center mb-8">
           <img
-            src="../../public/layout.png"
+            src="https://github.com/R1SH4BH81/HighFi-Dev/blob/main/public/layout.png?raw=true"
             alt="Easy to Read"
             className="w-full md:w-1/2 rounded-lg mb-4 md:mb-0 md:mr-4 shadow-md rounded-lg cursor-pointer"
-            onClick={() => openModal("../../public/layout.png")}
+            onClick={() =>
+              openModal(
+                "https://github.com/R1SH4BH81/HighFi-Dev/blob/main/public/layout.png?raw=true"
+              )
+            }
           />
           <p className="text-xl text-gray-700 md:w-1/2">
             Enjoy easy-to-read articles that provide clear and concise
@@ -68,15 +80,18 @@ const AboutUs = () => {
 
         <div className="flex flex-col md:flex-row-reverse items-center">
           <img
-            src="../../public/profile.png"
+            src="https://github.com/R1SH4BH81/HighFi-Dev/blob/main/public/profile.png?raw=true"
             alt="Manage Your Profile"
             className="w-full md:w-1/2 rounded-lg mb-4 md:mb-0 md:ml-4 shadow-md rounded-lg cursor-pointer"
-            onClick={() => openModal("../../public/profile.png")}
+            onClick={() =>
+              openModal(
+                "https://github.com/R1SH4BH81/HighFi-Dev/blob/main/public/profile.png?raw=true"
+              )
+            }
           />
           <p className="text-xl text-gray-700 md:w-1/2">
             Manage your profile with ease. Our intuitive interface makes it
-            simple to update your information, track your posts, and engage with
-            the community.
+            simple to update your information and engage with the community.
           </p>
         </div>
 
